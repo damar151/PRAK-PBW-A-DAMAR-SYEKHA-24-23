@@ -1,4 +1,4 @@
-# 📘 Laporan Praktikum Pertemuan Ke - 5
+# 📘 Laporan Praktikum Pertemuan Ke - 1 dan 2
 
 🧑‍🎓 Damar Syekha - 4524210023
 
