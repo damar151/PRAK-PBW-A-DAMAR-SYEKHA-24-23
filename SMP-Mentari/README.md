@@ -1,58 +1,162 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📘 Laporan Praktikum Pertemuan Ke - 5
+
+🧑‍🎓 Damar Syekha - 4524210023
+
+# 🏫 Website SMP Mentari Ceria
+<!-- deskripsi -->
+Aplikasi website sekolah berbasis Laravel yang menampilkan informasi kegiatan sekolah dan fitur buku tamu digital untuk SMP Mentari Ceria.
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.2">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite">
 </p>
 
-## About Laravel
+## Instalasi
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### 1. Clone Repository
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/chandracornelius13/PRAK-PBW-A-CHANDRA-24-22.git
+cd SMP-MENTARI
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Install Dependencies
 
-## Contributing
+```bash
+# Install PHP dependencies
+composer install
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Install Node dependencies
+npm install
+```
 
-## Code of Conduct
+### 3. Setup Environment
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+# Copy file .env
+cp .env.example .env
 
-## Security Vulnerabilities
+# Generate application key
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 4. Setup Database
 
-## License
+```bash
+# Jalankan migrasi
+php artisan migrate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 5. Build Assets
+
+```bash
+# Development
+npm run dev
+
+# Production
+npm run build
+```
+
+### 6. Jalankan Aplikasi
+
+```bash
+# Menggunakan built-in server
+php artisan serve
+
+# Atau menggunakan composer script (recommended)
+composer dev
+```
+
+Aplikasi akan berjalan di: `http://localhost:8000`
+
+## 📋 Daftar Isi
+
+- [Tentang Aplikasi](#-tentang-aplikasi)
+- [Fitur Utama](#-fitur-utama)
+- [Tech Stack](#-tech-stack)
+- [Persyaratan Sistem](#-persyaratan-sistem)
+- [Instalasi](#-instalasi)
+- [Penggunaan](#-penggunaan)
+- [Struktur Database](#-struktur-database)
+- [Struktur Project](#-struktur-project)
+- [Pengembangan](#-pengembangan)
+- [Testing](#-testing)
+- [Lisensi](#-lisensi)
+
+## 🎯 Tentang Aplikasi
+
+Website SMP Mentari Ceria adalah aplikasi web sederhana yang dibangun dengan Laravel 12 untuk menampilkan informasi dan kegiatan sekolah. Aplikasi ini dilengkapi dengan fitur buku tamu digital yang memungkinkan pengunjung meninggalkan pesan dan kesan mereka.
+
+### Fitur Halaman:
+
+1. **Halaman Home** - Menampilkan kegiatan-kegiatan terbaru sekolah
+2. **Buku Tamu** - Formulir interaktif untuk pengunjung meninggalkan pesan
+
+## ✨ Fitur Utama
+
+- ✅ **Tampilan Kegiatan Sekolah** - Showcase kegiatan terbaru dengan card design
+- ✅ **Buku Tamu Digital** - Pengunjung dapat meninggalkan pesan
+- ✅ **Form Validasi** - Validasi input untuk nama, email, dan pesan
+- ✅ **Real-time Feedback** - Notifikasi sukses/error setelah submit
+- ✅ **Responsive Design** - Tampilan optimal di semua device
+- ✅ **Timestamp Relatif** - Menampilkan waktu pesan (e.g., "2 jam yang lalu")
+- ✅ **Modern UI/UX** - Desain clean dengan Tailwind CSS
+
+## 🛠️ Tech Stack
+
+### Backend
+- **Laravel** 12.x - PHP Framework
+- **PHP** ^8.2 - Programming Language
+- **SQLite** - Database (Development)
+- **Eloquent ORM** - Database Management
+
+### Frontend
+- **Blade Templates** - Template Engine
+- **Tailwind CSS** 4.0 - CSS Framework
+- **Vite** 7.0 - Asset Bundler & HMR
+- **Axios** - HTTP Client
+
+### Development Tools
+- **Laravel Sail** - Docker Development Environment
+- **Pest PHP** - Testing Framework
+- **Laravel Pint** - Code Style Fixer
+- **Concurrently** - Multi-command Runner
+
+## 📸 Hasil Screenshot Tampilan Website SMP Mentari
+
+### Halaman Home
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a64d64a0-c13f-4f85-b745-ca34a580c4bc" />
+
+### Halaman Buku Tamu
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fc71c127-20ae-4606-9063-73d93efc70eb" />
+
+### Halaman Register
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/425f065c-c92d-47e8-95b2-c27041a9b905" />
+
+### Halaman Login
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/216e71f2-a8bc-46f5-9af4-9f48c943a1fb" />
+
+### Halaman Dashboard
+
+Dashboard di akses ketika sudah login dan bisa mengatur atau pusat kendali dari website SMP Mentari
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d7cc61dc-9829-4b7c-b6fe-8f0ca5219578" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f5ad41b2-4b7e-4a5f-84fd-ee30bff50e25" />
+
+Kendali atau mengelola kegiatan SMP Mentari
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8cb3d83f-d7ef-435a-8eca-88d56d8b293a" />
+
+Kelola Buku Tamu
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/28af5ada-efb2-4f30-8b79-9ca7e41ea285" />
+
+Konfigurasi tampilan Home Kegiatan per page dengan default nya 6 (Bisa diubah sesuai keinginan)
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c90e5fe0-69c9-4137-8112-a0101aef31d7" />
+
+<p align="center">
+Made with ❤️ for SMP Mentari Ceria
+</p>
