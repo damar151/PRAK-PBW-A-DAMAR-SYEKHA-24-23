@@ -35,26 +35,24 @@ Program ini berjalan di PHP, jadi butuh web server lokal. Di sini dipakai **Lara
 - PHP 8.1 atau lebih baru
 - Browser (Chrome/Firefox/Edge)
 - Code editor (VS Code)
+- Git
 
 ### Langkah Instalasi
 
 1. **Download Laragon** (versi Full) di https://laragon.org/download/
 2. **Install Laragon**, lalu jalankan aplikasinya.
 3. Klik **Start All** sampai Apache dan MySQL berjalan.
-4. **Clone atau download** repository ini:
+4. **Clone repository** ini ke dalam folder `www` Laragon:
 ```bash
-   git clone https://github.com/<username>/<nama-repo>.git
+   cd C:\laragon\www
+   git clone https://github.com/damar151/PRAK-PBW-A-DAMAR-SYEKHA-24-23.git
 ```
-5. **Salin folder project** ke dalam folder `www` Laragon:
-```
-   C:\laragon\www\damar\
-```
-   (Kalau pakai XAMPP, salin ke `C:\xampp\htdocs\damar\`)
-6. **Buka di browser**:
-   - Biodata: `http://localhost/damar/biodata.php`
-   - Kalkulator: `http://localhost/damar/kalkulator.php`
-   - Biodata (modifikasi): `http://localhost/damar/biodataModif.php`
-   - Kalkulator (modifikasi): `http://localhost/damar/kalkulatorModif.php`
+   (Kalau pakai XAMPP, clone ke `C:\xampp\htdocs\`)
+5. **Buka di browser**:
+   - Biodata: `http://localhost/PRAK-PBW-A-DAMAR-SYEKHA-24-23/biodata-kalkulator/biodata.php`
+   - Kalkulator: `http://localhost/PRAK-PBW-A-DAMAR-SYEKHA-24-23/biodata-kalkulator/kalkulator.php`
+   - Biodata (modifikasi): `http://localhost/PRAK-PBW-A-DAMAR-SYEKHA-24-23/biodata-kalkulator/biodataModif.php`
+   - Kalkulator (modifikasi): `http://localhost/PRAK-PBW-A-DAMAR-SYEKHA-24-23/biodata-kalkulator/kalkulatorModif.php`
 
 > **Catatan:** Jangan buka file PHP dengan klik dua kali (`file:///...`), karena kode PHP tidak akan dieksekusi. Selalu akses lewat `localhost`.
 
@@ -63,7 +61,7 @@ Program ini berjalan di PHP, jadi butuh web server lokal. Di sini dipakai **Lara
 ## Struktur Folder
 
 ```
-damar/
+biodata-kalkulator/
 ├── biodata.php           # Program asli (Pertemuan 1)
 ├── kalkulator.php        # Program asli (Pertemuan 1)
 ├── biodataModif.php      # Hasil modifikasi
