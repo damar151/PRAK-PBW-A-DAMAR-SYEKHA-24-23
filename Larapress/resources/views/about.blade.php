@@ -129,6 +129,12 @@
         </div>
 
         <div class="flex items-center gap-2 sm:gap-3">
+            <!-- Link kembali ke halaman utama -->
+            <a href="/" class="glass-button text-[#E5C07B] font-semibold px-4 py-2.5 rounded-2xl transform hover:scale-105 active:scale-95 transition duration-200 text-sm flex items-center space-x-2">
+                <i class="fa-solid fa-house text-[#56B6C2]"></i>
+                <span>Kembali ke Halaman Utama</span>
+            </a>
+
             <!-- Kontak Ucok Button -->
             <button onclick="openContactModal()" class="glass-button text-[#E5C07B] font-semibold px-4 py-2.5 rounded-2xl backdrop-blur-md transform hover:scale-105 active:scale-95 transition duration-200 text-sm flex items-center space-x-2">
                 <i class="fa-solid fa-phone text-[#56B6C2] animate-pulse"></i>
@@ -304,6 +310,7 @@
 
     <!-- Footer -->
     <footer class="w-full py-5 text-center text-slate-500 text-xs z-10 border-t border-white/5 bg-black/60 backdrop-blur-md">
+        <p class="mb-2"><a href="/" class="text-[#E5C07B] hover:underline">&larr; Kembali ke Halaman Utama</a></p>
         <p>Dibuat khusus untuk merayakan hari ulang tahun <span class="text-[#E5C07B] font-bold" id="footer-name">Ucok</span>.</p>
     </footer>
 
