@@ -1,162 +1,313 @@
-# 📘 Laporan Praktikum Pertemuan Ke - 3
+# Praktikum PBW - A
 
-🧑‍🎓 Damar Syekha - 4524210023
+**Laporan Praktikum 3 : Instalasi, Konfigurasi, dan Halaman Pertama Laravel (LaraPress)**
 
-# 🏫 Website SMP Mentari Ceria
-<!-- deskripsi -->
-Aplikasi website sekolah berbasis Laravel yang menampilkan informasi kegiatan sekolah dan fitur buku tamu digital untuk SMP Mentari Ceria.
+| | |
+|---|---|
+| **Nama** | Damar Syekha |
+| **NIM** | 4524210023 |
+| **Dosen Pengampu** | Bambang Riono Arsad, S.Kom., MMSI |
+| **Program Studi** | Teknik Informatika, Universitas Pancasila |
+| **Framework** | Laravel 12 / PHP >= 8.2 |
+| **Tahun** | 2026-2027 |
 
-<p align="center">
-  <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.2">
-  <img src="https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
-  <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite">
-</p>
+---
+
+## Daftar Isi
+
+1. [Tujuan Praktikum](#tujuan-praktikum)
+2. [Instalasi](#instalasi)
+3. [Struktur Folder](#struktur-folder)
+4. [Alur Kerja Laravel](#alur-kerja-laravel)
+5. [Langkah Praktikum](#langkah-praktikum)
+   - [Langkah 1: Membuat Proyek](#langkah-1-membuat-proyek-larapress)
+   - [Langkah 2: Menjalankan Server](#langkah-2-menjalankan-development-server)
+   - [Langkah 3: Route dan View Pertama](#langkah-3-memodifikasi-route-dan-view-pertama)
+   - [Langkah 4: Halaman Tentang Kami](#langkah-4-halaman-tentang-kami)
+   - [Langkah 5: Link Navigasi](#langkah-5-link-navigasi)
+6. [Tugas Mandiri: Halaman Kontak](#tugas-mandiri-halaman-kontak)
+7. [Kesimpulan](#kesimpulan)
+
+---
+
+## Tujuan Praktikum
+
+- Menginstal proyek Laravel 12 menggunakan Composer.
+- Menjalankan server lokal dengan `php artisan serve`.
+- Memahami struktur folder dasar Laravel.
+- Membuat Route di `routes/web.php`.
+- Membuat View menggunakan Blade.
+- Memahami alur **Request → Route → View → Response**.
+
+---
 
 ## Instalasi
 
-### 1. Clone Repository
+### Kebutuhan
+
+- Laragon (atau XAMPP) dengan PHP >= 8.2
+- Composer 2.x
+- Terminal (CMD / PowerShell / Terminal Laragon)
+- VS Code (ekstensi *Laravel Blade Snippets*)
+- Browser (Chrome/Firefox)
+- Git
+
+### Membuat Proyek dari Nol
 
 ```bash
-git clone https://github.com/chandracornelius13/PRAK-PBW-A-CHANDRA-24-22.git
-cd SMP-MENTARI
-```
-
-### 2. Install Dependencies
-
-```bash
-# Install PHP dependencies
-composer install
-
-# Install Node dependencies
-npm install
-```
-
-### 3. Setup Environment
-
-```bash
-# Copy file .env
-cp .env.example .env
-
-# Generate application key
-php artisan key:generate
-```
-
-### 4. Setup Database
-
-```bash
-# Jalankan migrasi
-php artisan migrate
-```
-
-### 5. Build Assets
-
-```bash
-# Development
-npm run dev
-
-# Production
-npm run build
-```
-
-### 6. Jalankan Aplikasi
-
-```bash
-# Menggunakan built-in server
+cd C:\laragon\www
+composer create-project laravel/laravel:"^12.0" LaraPress
+cd LaraPress
 php artisan serve
-
-# Atau menggunakan composer script (recommended)
-composer dev
 ```
 
-Aplikasi akan berjalan di: `http://localhost:8000`
+### Menjalankan Proyek dari Repository Ini
 
-## 📋 Daftar Isi
+Folder `vendor/` dan file `.env` tidak ikut di-push ke GitHub, jadi perlu disiapkan dulu:
 
-- [Tentang Aplikasi](#-tentang-aplikasi)
-- [Fitur Utama](#-fitur-utama)
-- [Tech Stack](#-tech-stack)
-- [Persyaratan Sistem](#-persyaratan-sistem)
-- [Instalasi](#-instalasi)
-- [Penggunaan](#-penggunaan)
-- [Struktur Database](#-struktur-database)
-- [Struktur Project](#-struktur-project)
-- [Pengembangan](#-pengembangan)
-- [Testing](#-testing)
-- [Lisensi](#-lisensi)
+1. **Clone repository** dan masuk ke folder project:
+```bash
+   cd C:\laragon\www
+   git clone https://github.com/damar151/PRAK-PBW-A-DAMAR-SYEKHA-24-23.git
+   cd PRAK-PBW-A-DAMAR-SYEKHA-24-23\Larapress
+```
+2. **Install dependency:**
+```bash
+   composer install
+```
+3. **Salin file environment:**
+```bash
+   copy .env.example .env
+```
+4. **Generate application key:**
+```bash
+   php artisan key:generate
+```
+5. **Jalankan server:**
+```bash
+   php artisan serve
+```
+6. **Buka di browser:**
+   - Beranda: `http://127.0.0.1:8000`
+   - Tentang Kami: `http://127.0.0.1:8000/tentang-kami`
+   - Kontak: `http://127.0.0.1:8000/kontak`
 
-## 🎯 Tentang Aplikasi
+---
 
-Website SMP Mentari Ceria adalah aplikasi web sederhana yang dibangun dengan Laravel 12 untuk menampilkan informasi dan kegiatan sekolah. Aplikasi ini dilengkapi dengan fitur buku tamu digital yang memungkinkan pengunjung meninggalkan pesan dan kesan mereka.
+## Struktur Folder
 
-### Fitur Halaman:
+Folder penting yang dipakai pada praktikum ini:
 
-1. **Halaman Home** - Menampilkan kegiatan-kegiatan terbaru sekolah
-2. **Buku Tamu** - Formulir interaktif untuk pengunjung meninggalkan pesan
+| Folder / File | Fungsi |
+|---|---|
+| `app/` | Kode inti aplikasi (Controller, Model, dll) |
+| `config/` | File konfigurasi aplikasi |
+| `database/` | Migration, Factory, Seeder |
+| `public/` | Document root, berisi `index.php`, CSS, JS, gambar |
+| `resources/views/` | File tampilan Blade |
+| `routes/web.php` | Daftar rute halaman web |
+| `storage/` | Cache, session, dan hasil compile Blade |
+| `.env` | Konfigurasi environment (DB, key, dll) |
 
-## ✨ Fitur Utama
+File yang diubah/dibuat pada praktikum ini:
 
-- ✅ **Tampilan Kegiatan Sekolah** - Showcase kegiatan terbaru dengan card design
-- ✅ **Buku Tamu Digital** - Pengunjung dapat meninggalkan pesan
-- ✅ **Form Validasi** - Validasi input untuk nama, email, dan pesan
-- ✅ **Real-time Feedback** - Notifikasi sukses/error setelah submit
-- ✅ **Responsive Design** - Tampilan optimal di semua device
-- ✅ **Timestamp Relatif** - Menampilkan waktu pesan (e.g., "2 jam yang lalu")
-- ✅ **Modern UI/UX** - Desain clean dengan Tailwind CSS
+```
+Larapress/
+├── routes/web.php                    # diubah (tambah route)
+├── resources/views/
+│   ├── welcome.blade.php             # diubah
+│   ├── about.blade.php               # baru
+│   └── kontak.blade.php              # baru (tugas mandiri)
+├── images/                           # screenshot laporan
+└── README.md
+```
 
-## 🛠️ Tech Stack
+---
 
-### Backend
-- **Laravel** 12.x - PHP Framework
-- **PHP** ^8.2 - Programming Language
-- **SQLite** - Database (Development)
-- **Eloquent ORM** - Database Management
+## Alur Kerja Laravel
 
-### Frontend
-- **Blade Templates** - Template Engine
-- **Tailwind CSS** 4.0 - CSS Framework
-- **Vite** 7.0 - Asset Bundler & HMR
-- **Axios** - HTTP Client
+```
+Browser → public/index.php → routes/web.php → View (Blade) → Response HTML
+```
 
-### Development Tools
-- **Laravel Sail** - Docker Development Environment
-- **Pest PHP** - Testing Framework
-- **Laravel Pint** - Code Style Fixer
-- **Concurrently** - Multi-command Runner
+1. Pengguna membuka URL di browser.
+2. Request masuk lewat `public/index.php`.
+3. Router (`routes/web.php`) mencocokkan URL dengan rute yang terdaftar.
+4. Rute menjalankan fungsi dan memanggil `view()`.
+5. Blade diproses menjadi HTML.
+6. Server mengirim response (status 200 OK) ke browser.
 
-## 📸 Hasil Screenshot Tampilan Website SMP Mentari
+---
 
-### Halaman Home
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a64d64a0-c13f-4f85-b745-ca34a580c4bc" />
+## Langkah Praktikum
 
-### Halaman Buku Tamu
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fc71c127-20ae-4606-9063-73d93efc70eb" />
+### Langkah 1: Membuat Proyek LaraPress
 
-### Halaman Register
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/425f065c-c92d-47e8-95b2-c27041a9b905" />
+Proyek dibuat dengan Composer di dalam folder `C:\laragon\www`.
 
-### Halaman Login
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/216e71f2-a8bc-46f5-9af4-9f48c943a1fb" />
+```bash
+composer create-project laravel/laravel:"^12.0" LaraPress
+```
 
-### Halaman Dashboard
+![Proses create-project](images/01-create-project.png)
 
-Dashboard di akses ketika sudah login dan bisa mengatur atau pusat kendali dari website SMP Mentari
+### Langkah 2: Menjalankan Development Server
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d7cc61dc-9829-4b7c-b6fe-8f0ca5219578" />
+Masuk ke folder proyek lalu jalankan server bawaan Laravel.
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f5ad41b2-4b7e-4a5f-84fd-ee30bff50e25" />
+```bash
+cd LaraPress
+php artisan serve
+```
 
-Kendali atau mengelola kegiatan SMP Mentari
+![Output php artisan serve](images/02-artisan-serve.png)
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8cb3d83f-d7ef-435a-8eca-88d56d8b293a" />
+Server aktif di `http://127.0.0.1:8000` dan menampilkan halaman default Laravel.
 
-Kelola Buku Tamu
+![Halaman default Laravel](images/03-welcome-default.png)
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/28af5ada-efb2-4f30-8b79-9ca7e41ea285" />
+### Langkah 3: Memodifikasi Route dan View Pertama
 
-Konfigurasi tampilan Home Kegiatan per page dengan default nya 6 (Bisa diubah sesuai keinginan)
+**Route** di `routes/web.php` berarti: saat URL `/` diakses dengan method GET, tampilkan view `welcome`.
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c90e5fe0-69c9-4137-8112-a0101aef31d7" />
+```php
+Route::get('/', function () {
+    return view('welcome');
+});
+```
 
-<p align="center">
-Made with ❤️ for SMP Mentari Ceria
-</p>
+![Isi routes/web.php](images/04-routes-web.png)
+
+Isi `resources/views/welcome.blade.php` diganti dengan HTML sederhana.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selamat Datang di LaraPress</title>
+</head>
+<body>
+    <h1>Selamat Datang di Blog LaraPress</h1>
+    <p>Ini adalah halaman utama dari aplikasi blog kita.</p>
+</body>
+</html>
+```
+
+![Kode welcome.blade.php](images/05-welcome-modif.png)
+
+Hasil di browser setelah di-refresh:
+
+![Halaman utama baru](images/06-welcome-hasil.png)
+
+### Langkah 4: Halaman Tentang Kami
+
+**a. Tambah route** di `routes/web.php`:
+
+```php
+Route::get('/tentang-kami', function () {
+    return view('about');
+});
+```
+
+![Route tentang-kami](images/07-route-about.png)
+
+**b. Buat view** `resources/views/about.blade.php`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tentang Kami - LaraPress</title>
+</head>
+<body>
+    <h1>Tentang LaraPress</h1>
+    <p>LaraPress adalah sebuah proyek blog sederhana yang dibuat untuk mempelajari dasar-dasar framework Laravel 12.</p>
+</body>
+</html>
+```
+
+![Kode about.blade.php](images/08-about-view.png)
+
+**c. Hasil** di `http://127.0.0.1:8000/tentang-kami`:
+
+![Halaman Tentang Kami](images/09-about-hasil.png)
+
+### Langkah 5: Link Navigasi
+
+Link ditambahkan agar pengguna bisa berpindah halaman.
+
+**welcome.blade.php**
+
+```html
+<a href="/tentang-kami">Lihat Halaman Tentang Kami</a>
+```
+
+![Link di welcome](images/10-link-welcome.png)
+
+**about.blade.php**
+
+```html
+<a href="/">Kembali ke Halaman Utama</a>
+```
+
+![Link di about](images/11-link-about.png)
+
+---
+
+## Tugas Mandiri: Halaman Kontak
+
+Membuat halaman statis baru "Kontak" yang bisa diakses lewat `/kontak`, berisi informasi kontak fiktif, dan terhubung dengan halaman lain lewat link navigasi.
+
+**a. Route** di `routes/web.php`:
+
+```php
+Route::get('/kontak', function () {
+    return view('kontak');
+});
+```
+
+![Route kontak](images/12-route-kontak.png)
+
+**b. View** `resources/views/kontak.blade.php`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kontak - LaraPress</title>
+</head>
+<body>
+    <h1>Kontak Kami</h1>
+    <p>Email: info@larapress.test</p>
+    <p>Telepon: 0812-3456-7890</p>
+    <a href="/">Kembali ke Halaman Utama</a> |
+    <a href="/tentang-kami">Tentang Kami</a>
+</body>
+</html>
+```
+
+![Kode kontak.blade.php](images/13-kontak-view.png)
+
+**c. Link navigasi ke Kontak** ditambahkan di `welcome.blade.php` dan `about.blade.php`:
+
+```html
+<a href="/kontak">Hubungi Kami</a>
+```
+
+![Link ke kontak](images/14-link-kontak.png)
+
+**d. Hasil** di `http://127.0.0.1:8000/kontak`:
+
+![Halaman Kontak](images/15-kontak-hasil.png)
+
+---
+
+## Kesimpulan
+
+- Proyek Laravel 12 "LaraPress" berhasil dibuat dengan Composer dan dijalankan memakai `php artisan serve`.
+- Alur dasar Laravel (**Route → View → Response**) berhasil dipahami dan dipraktikkan.
+- Tiga halaman statis berhasil dibuat (Beranda, Tentang Kami, Kontak) dan saling terhubung lewat link navigasi.
+
+---
+
+<p align="center">Disusun oleh <b>Damar Syekha - 4524210023</b></p>
