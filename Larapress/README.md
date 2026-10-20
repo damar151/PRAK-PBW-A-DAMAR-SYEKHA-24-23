@@ -288,19 +288,6 @@ Route::get('/kontak', function () {
 
 ![Kode kontak.blade.php](images/13-kontak-view.png)
 
-**c. Link navigasi ke Kontak** ditambahkan di `welcome.blade.php` dan `about.blade.php`:
-
-```html
-<a href="/kontak">Hubungi Kami</a>
-```
-
-![Link ke kontak](images/14-link-kontak.png)
-
-**d. Hasil** di `http://127.0.0.1:8000/kontak`:
-
-![Halaman Kontak](images/15-kontak-hasil.png)
-
----
 
 ## Kesimpulan
 
