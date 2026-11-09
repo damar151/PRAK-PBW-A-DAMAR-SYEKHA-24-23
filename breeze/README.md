@@ -1,162 +1,107 @@
-# 📘 Laporan Praktikum Pertemuan Ke - 4
+# LaraPress -Breeze
+Dokumentasi ini mencakup materi dan tahap implementasi **Sistem Autentikasi Pengguna** pada proyek **LaraPress** menggunakan modul **Laravel Breeze**. Pembahasan berfokus pada mekanisme pendaftaran pengguna, otentikasi masuk (*login*), keamanan data sandi, hingga pengamanan akses rute internal aplikasi.
 
-🧑‍🎓 Damar Syekha - 4524210023
-
-# 🏫 Website SMP Mentari Ceria
-<!-- deskripsi -->
-Aplikasi website sekolah berbasis Laravel yang menampilkan informasi kegiatan sekolah dan fitur buku tamu digital untuk SMP Mentari Ceria.
-
-<p align="center">
-  <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.2">
-  <img src="https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
-  <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite">
-</p>
-
-## Instalasi
-
-### 1. Clone Repository
-
-```bash
-git clone https://github.com/chandracornelius13/PRAK-PBW-A-CHANDRA-24-22.git
-cd SMP-MENTARI
-```
-
-### 2. Install Dependencies
-
-```bash
-# Install PHP dependencies
-composer install
-
-# Install Node dependencies
-npm install
-```
-
-### 3. Setup Environment
-
-```bash
-# Copy file .env
-cp .env.example .env
-
-# Generate application key
-php artisan key:generate
-```
-
-### 4. Setup Database
-
-```bash
-# Jalankan migrasi
-php artisan migrate
-```
-
-### 5. Build Assets
-
-```bash
-# Development
-npm run dev
-
-# Production
-npm run build
-```
-
-### 6. Jalankan Aplikasi
-
-```bash
-# Menggunakan built-in server
-php artisan serve
-
-# Atau menggunakan composer script (recommended)
-composer dev
-```
-
-Aplikasi akan berjalan di: `http://localhost:8000`
+---
 
 ## 📋 Daftar Isi
 
-- [Tentang Aplikasi](#-tentang-aplikasi)
-- [Fitur Utama](#-fitur-utama)
-- [Tech Stack](#-tech-stack)
-- [Persyaratan Sistem](#-persyaratan-sistem)
-- [Instalasi](#-instalasi)
-- [Penggunaan](#-penggunaan)
-- [Struktur Database](#-struktur-database)
-- [Struktur Project](#-struktur-project)
-- [Pengembangan](#-pengembangan)
-- [Testing](#-testing)
-- [Lisensi](#-lisensi)
+1. [Prasyarat & Spesifikasi Lingkungan](#1-prasyarat--spesifikasi-lingkungan)
+2. [Panduan Instalasi & Konfigurasi](#2-panduan-instalasi--konfigurasi)
+3. [Cakupan Pelaksanaan Tugas](#3-cakupan-pelaksanaan-tugas)
+4. [Ringkasan Fitur Keamanan & Sistem](#4-ringkasan-fitur-keamanan--sistem)
+5. [Pemetaan Rute & Tingkat Otorisasi](#5-pemetaan-rute--tingkat-otorisasi)
 
-## 🎯 Tentang Aplikasi
+---
 
-Website SMP Mentari Ceria adalah aplikasi web sederhana yang dibangun dengan Laravel 12 untuk menampilkan informasi dan kegiatan sekolah. Aplikasi ini dilengkapi dengan fitur buku tamu digital yang memungkinkan pengunjung meninggalkan pesan dan kesan mereka.
+## 1. Prasyarat & Spesifikasi Lingkungan
 
-### Fitur Halaman:
+Sebelum memulai penyiapan proyek, pastikan perangkat keras dan perangkat lunak Anda memenuhi spesifikasi berikut:
 
-1. **Halaman Home** - Menampilkan kegiatan-kegiatan terbaru sekolah
-2. **Buku Tamu** - Formulir interaktif untuk pengunjung meninggalkan pesan
+| Perangkat / Modul | Versi Acuan | Peran dalam Sistem |
+| :--- | :--- | :--- |
+| **PHP** | Minimal `8.2` | *Runtime engine* utama |
+| **Framework** | `Laravel 12.x` | *Base framework* backend & routing |
+| **Starter Kit** | `Laravel Breeze` | Package manajemen autentikasi bawaan |
+| **Database** | `MySQL` / `MariaDB` | Penyimpanan entitas `users`, `sessions`, dll. |
+| **Asset Manager** | `Node.js` & `NPM` | Kompilasi Tailwind CSS dan skrip frontend |
 
-## ✨ Fitur Utama
+---
 
-- ✅ **Tampilan Kegiatan Sekolah** - Showcase kegiatan terbaru dengan card design
-- ✅ **Buku Tamu Digital** - Pengunjung dapat meninggalkan pesan
-- ✅ **Form Validasi** - Validasi input untuk nama, email, dan pesan
-- ✅ **Real-time Feedback** - Notifikasi sukses/error setelah submit
-- ✅ **Responsive Design** - Tampilan optimal di semua device
-- ✅ **Timestamp Relatif** - Menampilkan waktu pesan (e.g., "2 jam yang lalu")
-- ✅ **Modern UI/UX** - Desain clean dengan Tailwind CSS
+## 2. Panduan Instalasi & Konfigurasi
 
-## 🛠️ Tech Stack
+Ikuti alur eksekusi berikut untuk menyiapkan sistem autentikasi Laravel Breeze pada proyek LaraPress:
 
-### Backend
-- **Laravel** 12.x - PHP Framework
-- **PHP** ^8.2 - Programming Language
-- **SQLite** - Database (Development)
-- **Eloquent ORM** - Database Management
+1. **Pindah ke Direktori Proyek:**
+   ```bash
+   cd larapres
+   ```
 
-### Frontend
-- **Blade Templates** - Template Engine
-- **Tailwind CSS** 4.0 - CSS Framework
-- **Vite** 7.0 - Asset Bundler & HMR
-- **Axios** - HTTP Client
+2. **Pemasangan Starter Kit Laravel Breeze:**
+   ```bash
+   composer require laravel/breeze --dev
+   ```
 
-### Development Tools
-- **Laravel Sail** - Docker Development Environment
-- **Pest PHP** - Testing Framework
-- **Laravel Pint** - Code Style Fixer
-- **Concurrently** - Multi-command Runner
+3. **Inisialisasi Setup Breeze:**
+   ```bash
+   php artisan breeze:install
+   ```
+   * **Preset yang Dipilih:**
+     * **Stack:** `Blade with Alpine`
+     * **Dark Mode Support:** `No`
+     * **Testing Framework:** `Pest`
 
-## 📸 Hasil Screenshot Tampilan Website SMP Mentari
+4. **Kompilasi Asset Frontend:**
+   ```bash
+   npm install
+   npm run dev
+   ```
 
-### Halaman Home
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a64d64a0-c13f-4f85-b745-ca34a580c4bc" />
+5. **Eksekusi Struktur Tabel (Migration):**
+   ```bash
+   php artisan migrate
+   ```
 
-### Halaman Buku Tamu
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fc71c127-20ae-4606-9063-73d93efc70eb" />
+6. **Menjalankan Server Lokal:**
+   ```bash
+   php artisan serve
+   ```
+   Aplikasi dapat diakses melalui browser pada URL `http://127.0.0.1:8000`.
 
-### Halaman Register
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/425f065c-c92d-47e8-95b2-c27041a9b905" />
+---
 
-### Halaman Login
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/216e71f2-a8bc-46f5-9af4-9f48c943a1fb" />
+## 3. Cakupan Pelaksanaan Tugas
 
-### Halaman Dashboard
+Selama proses pengerjaan Pertemuan 4, berikut adalah poin-poin utama yang diselesaikan:
 
-Dashboard di akses ketika sudah login dan bisa mengatur atau pusat kendali dari website SMP Mentari
+1. **Pemahaman Konsep Fundamental Keamanan:**
+   * Memahami perbedaan dasar antara **Autentikasi** (verifikasi identitas) dan **Otorisasi** (penentuan hak akses).
+   * Penerapan enkripsi kata sandi menggunakan alur *hashing* **Bcrypt**.
+   * Proteksi form dari ancaman serangan *Cross-Site Request Forgery* (**CSRF**).
+   * Pengelolaan status sesi pengguna memanfaatkan kombinasi *HTTP Cookies* dan *Session Storage*.
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d7cc61dc-9829-4b7c-b6fe-8f0ca5219578" />
+2. **Integrasi Laravel Breeze:** Mengonfigurasi modul autentikasi siap pakai pada aplikasi LaraPress.
+3. **Penerapan Keamanan Rute:** Memproteksi endpoint sensitif seperti `/dashboard` dan `/profile` menggunakan *middleware* `auth`.
+4. **Penyesuaian Antarmuka (UI Customization):** Merancang ulang serta menyesuaikan tampilan bawaan halaman masuk, pendaftaran, dasbor, dan pengaturan profil pengguna.
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f5ad41b2-4b7e-4a5f-84fd-ee30bff50e25" />
+---
 
-Kendali atau mengelola kegiatan SMP Mentari
+## 4. Ringkasan Fitur Keamanan & Sistem
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8cb3d83f-d7ef-435a-8eca-88d56d8b293a" />
+* 🔐 **Registrasi & Login Terintegrasi:** Fasilitas alur pendaftaran akun baru serta verifikasi identitas pengguna yang aman.
+* 🛡️ **Pengamanan Data & Proteksi CSRF:** Penyimpanan kata sandi dalam bentuk *hash* yang terenkripsi dan penyisipan token unik CSRF di setiap formulir input.
+* 🚧 **Filtering Akses via Middleware (`auth`):** Pembatasan hak akses halaman internal secara otomatis; pengguna yang belum *login* akan dialihkan kembali ke halaman utama.
+* 📊 **Panel Dasbor Utama:** Area kerja khusus terproteksi yang menyambut pengguna setelah proses autentikasi berhasil (`/dashboard`).
+* 👤 **Manajemen Akun Mandiri:** Fitur bagi pengguna untuk memperbarui data pribadi serta mengubah pengaturan keamanan akun (`/profile`).
 
-Kelola Buku Tamu
+---
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/28af5ada-efb2-4f30-8b79-9ca7e41ea285" />
+## 5. Pemetaan Rute & Tingkat Otorisasi
 
-Konfigurasi tampilan Home Kegiatan per page dengan default nya 6 (Bisa diubah sesuai keinginan)
+Berikut adalah struktur endpoint rute yang terbentuk beserta tingkat otorisasi aksesnya:
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c90e5fe0-69c9-4137-8112-a0101aef31d7" />
-
-<p align="center">
-Made with ❤️ for SMP Mentari Ceria
-</p>
+| Modul Halaman | Endpoint Rute | HTTP Method | Tingkat Otorisasi / Akses |
+| :--- | :--- | :--- | :--- |
+| **Formulir Login** | `/login` | `GET` / `POST` | Terbuka (Publik) |
+| **Formulir Registrasi** | `/register` | `GET` / `POST` | Terbuka (Publik) |
+| **Dasbor Utama** | `/dashboard` | `GET` | Terproteksi (*Login Required*) |
+| **Pengelolaan Profil** | `/profile` | `GET` / `PATCH` / `DELETE` | Terproteksi (*Login Required*) |
